@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from "react";
-import Axios from Axios
+import Axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App(){
@@ -25,6 +25,50 @@ function App(){
             alert("funcionarios registrados com sucesso!!!");
             limparCampos();
         });
-        
+
     }
+
+    const update = () => {
+
+        Axios.put("http://localhost:3001/update", {
+            id:id,
+            nome:nome,
+            idade:idade,
+            cargo:cargo,
+            temposer:temposer
+        }).then(()=> {
+            getFuncionarios();
+            alert("funcionarios atualizado com sucesso!!!");
+            limparCampos();
+        });
+
+    }
+
+    const deleteFuncionarios = (id) => {
+        Axios.delete(`http://localhost:3001/delete/${id}`).then(()=>{
+            getFuncionarios();
+                alert("Eliminado");
+                limparCampos();
+            
+        })
+    }
+
+}
+
+const limparCampos = () => {
+    setNome("");
+    setidade(0);
+    setcargo("");
+    setid(0);
+    setTemposer("");
+    setEditar(false)
+    
+}
+const editarFuncionatrio = (val) => {
+    setNome(val.nome);
+    setidade(val.idade);
+    setcargo(val.cargo);
+    setid(val.id);
+    setTemposer(val.temposer);
+    setEditar(true);
 }
