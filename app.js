@@ -64,7 +64,7 @@ const limparCampos = () => {
     setEditar(false)
     
 }
-const editarFuncionatrio = (val) => {
+const editarFuncionario = (val) => {
     setNome(val.nome);
     setidade(val.idade);
     setcargo(val.cargo);
