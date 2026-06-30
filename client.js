@@ -6,27 +6,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [nombre, setNombre] = useState("");
-  const [edad, setEdad] = useState();
+  const [nome, setNome] = useState("");
+  const [idade, setIdade] = useState();
   const [pais, setPais] = useState("");
   const [cargo, setCargo] = useState("");
-  const [anios, setAnios] = useState();
+  const [temposer, setTemposer] = useState();
   const [id, setId] = useState();
 
   const [editar, setEditar] = useState(false);
 
-  const [empleadosList, setEmpleados] = useState([]);
+  const [FuncionariosList, SetFuncionarios] = useState([]);
 
   const add = () => {
 
     Axios.post("http://localhost:3001/create", {
-      nombre: nombre,
-      edad: edad,
+      nome: nome,
+      idade: idade,
       pais: pais,
       cargo: cargo,
-      anios: anios
+      temposer: temposer
     }).then(() => {
-      getEmpleados();
+      geFuncionarios();
       alert("Empregado registrado");
       limpiarCampos();
     });
@@ -36,22 +36,22 @@ function App() {
 
     Axios.put("http://localhost:3001/update", {
       id: id,
-      nombre: nombre,
-      edad: edad,
+      nome: nome,
+      idade: idade,
       pais: pais,
       cargo: cargo,
-      anios: anios
+      temposer: temposer
     }).then(() => {
-      getEmpleados();
+      getFuncionarios();
       alert("Atualizado!!!");
       limpiarCampos();
     });
   }
 
-  const deleteEmpleados = (id) => {
+  const deleteFuncionarios = (id) => {
 
     Axios.delete(`http://localhost:3001/delete/${id}`).then(() => {
-      getEmpleados();
+      getFuncionarios();
       alert("Eliminado!!!");
       limpiarCampos();
     });
@@ -62,11 +62,11 @@ function App() {
 
   const limpiarCampos = () => {
 
-    setNombre("");
-    setEdad(0);
+    setNome("");
+    setIdade(0);
     setPais("");
     setCargo("");
-    setAnios(0);
+    setTemposer(0);
     setId(0);
     setEditar(false);
 
@@ -74,15 +74,15 @@ function App() {
   }
 
 
-  const editarEmpleado = (val) => {
+  const editarFuncionarios = (val) => {
 
     setEditar(true);
 
-    setNombre(val.nombre);
-    setEdad(val.edad);
+    setNome(val.nombre);
+    setIdade(val.edad);
     setPais(val.pais);
     setCargo(val.cargo);
-    setAnios(val.anios);
+    setTemposer(val.anios);
     setId(val.id);
 
 
@@ -90,15 +90,15 @@ function App() {
 
 
 
-  const getEmpleados = () => {
+  const getFuncionarios = () => {
 
     Axios.get("http://localhost:3001/empleados").then((response) => {
-      setEmpleados(response.data);
+      SetFuncionarios(response.data);
     });
 
   }
 
-  getEmpleados();
+  getFuncionarios();
 
   ////  seu codigo deve ser inserido ali com uma funÃ§Ã£o return 
 

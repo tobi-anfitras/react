@@ -14,14 +14,14 @@ const db = mysql.createConnection({
 });
 
 app.post("/create",(req,res)=>{
-    const nombre = req.body.nombre;
-    const edad = req.body.edad;
+    const nome = req.body.nome;
+    const idade = req.body.idade;
     const pais = req.body.pais;    
     const cargo = req.body.cargo;
-    const anios = req.body.anios;
+    const temposer = req.body.temposer;
     const id = req.body.id;
 
-    db.query('INSERT INTO empleados (nombre,edad,pais,cargo,anios) VALUES(?,?,?,?,?)',[nombre,edad,pais,cargo,anios],
+    db.query('INSERT INTO empleados (nombre,edad,pais,cargo,anios) VALUES(?,?,?,?,?)',[nome,idade,pais,cargo,temposer],
 
     (err,result)=>{
         if(err){
@@ -51,13 +51,13 @@ app.get("/empleados",(req,res)=>{
 
 app.put("/update",(req,res)=>{
     const id = req.body.id;
-    const nombre = req.body.nombre;
-    const edad = req.body.edad;
+    const nome = req.body.nome;
+    const idade = req.body.idade;
     const pais = req.body.pais;    
     const cargo = req.body.cargo;
-    const anios = req.body.anios;
+    const temposer = req.body.temposer;
 
-    db.query('UPDATE empleados SET nombre=?,edad=?,pais=?,cargo=?,anios=? WHERE id=?',[nombre,edad,pais,cargo,anios,id],
+    db.query('UPDATE empleados SET nombre=?,edad=?,pais=?,cargo=?,anios=? WHERE id=?',[nome,idade,pais,cargo,temposer,id],
     
     (err,result)=>{
         if(err){
