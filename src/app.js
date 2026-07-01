@@ -4,8 +4,10 @@ import Axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App(){
+    
     const [nome,setNome] = useState("")
     const [idade,setIdade] = useState("")
+    const [pais,setPais] = useState("")
     const [cargo,setCargo] = useState("")
     const [temposer,setTemposer] = useState()
     const [id,setId] = useState()
@@ -16,8 +18,10 @@ function App(){
     const add = () => {
 
         Axios.post("http://localhost:3001/create", {
+
             nome:nome,
             idade:idade,
+            pais:pais,
             cargo:cargo,
             temposer:temposer
         }).then(()=> {
@@ -34,6 +38,7 @@ function App(){
             id:id,
             nome:nome,
             idade:idade,
+            pais:pais,
             cargo:cargo,
             temposer:temposer
         }).then(()=> {
@@ -58,6 +63,7 @@ function App(){
 const limparCampos = () => {
     setNome("");
     setidade(0);
+    setPais("")
     setcargo("");
     setid(0);
     setTemposer("");
@@ -67,6 +73,7 @@ const limparCampos = () => {
 const editarFuncionario = (val) => {
     setNome(val.nome);
     setidade(val.idade);
+    setPais(val.pais)
     setcargo(val.cargo);
     setid(val.id);
     setTemposer(val.temposer);
